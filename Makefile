@@ -13,12 +13,12 @@ shell:
 release:
 	$(if $(filter $(CURRENT_BRANCH),main),,$(error ERR: Not on main branch))
 	$(eval VERSION := $(shell poetry version $(ver) -s))
-	@git add pyproject.toml
-	@git commit -m "v$(VERSION)"
-	@git tag v$(VERSION)
-	@git push
-	@git push --tags
-	@poetry version
+	git add pyproject.toml
+	git commit -m "v$(VERSION)"
+	git tag v$(VERSION)
+	git push
+	git push --tags
+	poetry version
 
 release-dry:
 	$(if $(filter $(CURRENT_BRANCH),main),,$(warning WARN: Not on main branch))
