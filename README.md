@@ -1,2 +1,3 @@
-# spotify-python-sdk
-yet to be named python spotify sdk
+# spotify.py
+
+WiP
