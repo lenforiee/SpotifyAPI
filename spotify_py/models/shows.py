@@ -1,41 +1,17 @@
 from __future__ import annotations
 
-from typing import Optional
+from typing import Literal
+from typing import TYPE_CHECKING
 
 from pydantic import BaseModel
 
-from spotify_py.models.base import ExternalUrls
-from spotify_py.models.base import Image
-from spotify_py.models.base import Copyright
-from spotify_py.models.base import GenericList
-from spotify_py.models.base import Restrictions
-from spotify_py.models.base import ResumePoint
+from .shared.external_urls import ExternalUrls
+from .shared.image import Image
+from .shared.copyright import Copyright
+from .shared.paging_object import PagingObject
 
-
-class SimplifiedEpisode(BaseModel):
-    audio_preview_url: Optional[str] = None
-    description: str
-    html_description: str
-    duration_ms: int
-    explicit: bool
-    external_urls: ExternalUrls
-    href: str
-    id: str
-    images: list[Image]
-    is_externally_hosted: bool
-    is_playable: bool
-    languages: list[str]
-    name: str
-    release_date: str
-    release_date_precision: str
-    resume_point: ResumePoint
-    type: str
-    uri: str
-    restrictions: Optional[Restrictions] = None
-
-
-class Episode(SimplifiedEpisode):
-    show: SimplifiedShow
+if TYPE_CHECKING:  # avoid circular imports
+    from .episodes import SimplifiedEpisode
 
 
 class SimplifiedShow(BaseModel):
@@ -53,10 +29,10 @@ class SimplifiedShow(BaseModel):
     media_type: str
     name: str
     publisher: str
-    type: str
+    type: Literal["show"]
     uri: str
     total_chapters: int
 
 
 class Show(SimplifiedShow):
-    episodes: GenericList[SimplifiedEpisode]
+    episodes: PagingObject[SimplifiedEpisode]

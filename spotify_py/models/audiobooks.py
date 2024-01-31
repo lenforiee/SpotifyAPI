@@ -1,42 +1,17 @@
 from __future__ import annotations
 
-from typing import Optional
+from typing import Literal
+from typing import TYPE_CHECKING
 
 from pydantic import BaseModel
 
-from spotify_py.models.base import ExternalUrls
-from spotify_py.models.base import Image
-from spotify_py.models.base import Copyright
-from spotify_py.models.base import GenericList
-from spotify_py.models.base import Restrictions
-from spotify_py.models.base import ResumePoint
+from .shared.external_urls import ExternalUrls
+from .shared.image import Image
+from .shared.copyright import Copyright
+from .shared.paging_object import PagingObject
 
-
-class SimplifiedChapter(BaseModel):
-    audio_preview_url: Optional[str] = None
-    available_markets: Optional[list[str]] = None
-    chapter_number: int
-    description: str
-    html_description: str
-    duration_ms: int
-    explicit: bool
-    external_urls: ExternalUrls
-    href: str
-    id: str
-    images: list[Image]
-    is_playable: bool
-    languages: list[str]
-    name: str
-    release_date: str
-    release_date_precision: str
-    resume_point: ResumePoint
-    type: str
-    uri: str
-    restrictions: Optional[Restrictions] = None
-
-
-class Chapter(SimplifiedChapter):
-    audiobook: SimplifiedAudiobook
+if TYPE_CHECKING:  # avoid circular imports
+    from .chapters import SimplifiedChapter
 
 
 class AudiobookCredit(BaseModel):
@@ -49,7 +24,7 @@ class SimplifiedAudiobook(BaseModel):
     copyrights: list[Copyright]
     description: str
     html_description: str
-    edition: Optional[str] = None
+    edition: str
     explicit: bool
     external_urls: ExternalUrls
     href: str
@@ -60,10 +35,10 @@ class SimplifiedAudiobook(BaseModel):
     name: str
     narrators: list[AudiobookCredit]
     publisher: str
-    type: str
+    type: Literal["audiobook"]
     uri: str
     total_chapters: int
 
 
 class Audiobook(SimplifiedAudiobook):
-    chapters: GenericList[SimplifiedChapter]
+    chapters: PagingObject[SimplifiedChapter]

@@ -1,10 +1,11 @@
 from __future__ import annotations
 
-from typing import Optional
-
 from pydantic import BaseModel
-from spotify_py.models.base import Image
-from spotify_py.models.base import ExternalUrls
+from typing import Literal
+
+from .shared.image import Image
+from .shared.external_urls import ExternalUrls
+from .shared.followers import Followers
 
 
 class SimplifiedArtist(BaseModel):
@@ -12,17 +13,12 @@ class SimplifiedArtist(BaseModel):
     href: str
     id: str
     name: str
-    type: str
+    type: Literal["artist"]
     uri: str
 
 
-class ArtistFollowers(BaseModel):
-    href: Optional[str] = None
-    total: int
-
-
 class Artist(SimplifiedArtist):
-    followers: ArtistFollowers
+    followers: Followers
     genres: list[str]
     images: list[Image]
     popularity: int
