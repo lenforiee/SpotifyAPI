@@ -1,14 +1,15 @@
 from __future__ import annotations
 
-from typing import Optional
 from typing import Literal
+from typing import Optional
 from typing import TYPE_CHECKING
+
 from pydantic import BaseModel
 
 from .artists import SimplifiedArtist
+from .shared.external_ids import ExternalIds
 from .shared.external_urls import ExternalUrls
 from .shared.restrictions import Restrictions
-from .shared.external_ids import ExternalIds
 
 if TYPE_CHECKING:  # avoid circular imports
     from .albums import SimplifiedAlbum

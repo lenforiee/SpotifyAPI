@@ -1,8 +1,8 @@
 from __future__ import annotations
 
+from typing import Generic
 from typing import Optional
 from typing import TypeVar
-from typing import Generic
 
 from pydantic import BaseModel
 

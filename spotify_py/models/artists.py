@@ -1,11 +1,12 @@
 from __future__ import annotations
 
-from pydantic import BaseModel
 from typing import Literal
 
-from .shared.image import Image
+from pydantic import BaseModel
+
 from .shared.external_urls import ExternalUrls
 from .shared.followers import Followers
+from .shared.image import Image
 
 
 class SimplifiedArtist(BaseModel):

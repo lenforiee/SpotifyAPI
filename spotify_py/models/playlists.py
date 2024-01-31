@@ -1,19 +1,19 @@
 from __future__ import annotations
 
 from datetime import datetime
-
-from typing import Optional
 from typing import Literal
+from typing import Optional
 from typing import Union
+
 from pydantic import BaseModel
 
+from .episodes import Episode
 from .shared.external_urls import ExternalUrls
 from .shared.followers import Followers
 from .shared.image import Image
 from .shared.paging_object import PagingObject
-from .users import UserBase
 from .tracks import Track
-from .episodes import Episode
+from .users import UserBase
 
 
 class PlaylistTrack(BaseModel):

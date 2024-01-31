@@ -1,14 +1,15 @@
 from __future__ import annotations
 
-from typing import Optional
 from typing import Literal
+from typing import Optional
 from typing import TYPE_CHECKING
+
 from pydantic import BaseModel
 
 from .shared.external_urls import ExternalUrls
 from .shared.image import Image
-from .shared.resume_point import ResumePoint
 from .shared.restrictions import Restrictions
+from .shared.resume_point import ResumePoint
 
 if TYPE_CHECKING:  # avoid circular imports
     from .shows import SimplifiedShow

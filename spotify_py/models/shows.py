@@ -5,9 +5,9 @@ from typing import TYPE_CHECKING
 
 from pydantic import BaseModel
 
+from .shared.copyright import Copyright
 from .shared.external_urls import ExternalUrls
 from .shared.image import Image
-from .shared.copyright import Copyright
 from .shared.paging_object import PagingObject
 
 if TYPE_CHECKING:  # avoid circular imports

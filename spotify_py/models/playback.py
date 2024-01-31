@@ -1,16 +1,16 @@
 from __future__ import annotations
 
 from datetime import datetime
-
 from typing import Literal
 from typing import Optional
 from typing import Union
+
 from pydantic import BaseModel
 
+from .devices import Device
+from .episodes import Episode
 from .shared.external_urls import ExternalUrls
 from .tracks import Track
-from .episodes import Episode
-from .devices import Device
 
 
 # Since all variables are optional, lets initialise them with false
