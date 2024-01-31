@@ -1,0 +1,33 @@
+[tool.mypy]
+plugins = ["pydantic.mypy"]
+mypy_path = "./"
+files = ["spotify_py"]
+disallow_untyped_defs = true
+disallow_any_unimported = true
+no_implicit_optional = true
+check_untyped_defs = true
+warn_unused_ignores = true
+show_error_codes = true
+
+[tool.poetry]
+name = "spotify-py"
+version = "0.1.0"
+description = ""
+authors = ["lenforiee <lenforiee@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{ include = "spotify_py" }]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+pydantic = "^2.6.0"
+httpx = "^0.26.0"
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.1.1"
+pre-commit = "^3.6.0"
+mypy = "^1.8.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

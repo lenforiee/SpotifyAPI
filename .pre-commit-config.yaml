@@ -19,12 +19,12 @@ repos:
     rev: v2.34.0
     hooks:
       - id: pyupgrade
-        args: [--py38-plus, --keep-runtime-typing]
+        args: [--py39-plus, --keep-runtime-typing]
   - repo: https://github.com/asottile/reorder_python_imports
     rev: v3.1.0
     hooks:
       - id: reorder-python-imports
-        args: [--py38-plus]
+        args: [--py39-plus]
   - repo: https://github.com/asottile/add-trailing-comma
     rev: v2.2.3
     hooks:
@@ -36,4 +36,4 @@ repos:
         additional_dependencies: [black==21.11b1]
 
 default_language_version:
-  python: python3.8
+  python: python3.9
