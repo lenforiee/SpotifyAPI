@@ -1,7 +1,7 @@
 [tool.mypy]
 plugins = ["pydantic.mypy"]
 mypy_path = "./"
-files = ["spotify_py"]
+files = ["spotify"]
 disallow_untyped_defs = true
 disallow_any_unimported = true
 no_implicit_optional = true
@@ -16,7 +16,7 @@ description = ""
 authors = ["lenforiee <lenforiee@gmail.com>"]
 license = "MIT"
 readme = "README.md"
-packages = [{ include = "spotify_py" }]
+packages = [{ include = "spotify" }]
 
 [tool.poetry.dependencies]
 python = "^3.9"
